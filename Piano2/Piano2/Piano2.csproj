@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{53704813-A0C0-45BF-BEC4-976CE3F575D8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Piano2</RootNamespace>
+    <AssemblyName>Piano2</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BlackMuskey.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MusicNote.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PianoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PianoForm.Designer.cs">
+      <DependentUpon>PianoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Muskey.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="PianoForm.resx">
+      <DependentUpon>PianoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="bin\Debug\Notes-Images\PNG format\Quaver.xcf" />
+    <None Include="bin\Debug\Notes-Images\Quaver.xcf" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Notes-Images\44.bmp" />
+    <Content Include="bin\Debug\Notes-Images\Bar.bmp" />
+    <Content Include="bin\Debug\Notes-Images\blank.bmp" />
+    <Content Include="bin\Debug\Notes-Images\Crotchet.bmp" />
+    <Content Include="bin\Debug\Notes-Images\CrotchetR.bmp" />
+    <Content Include="bin\Debug\Notes-Images\DotMin.bmp" />
+    <Content Include="bin\Debug\Notes-Images\DotMinim.bmp" />
+    <Content Include="bin\Debug\Notes-Images\flat.bmp" />
+    <Content Include="bin\Debug\Notes-Images\Flat1.bmp" />
+    <Content Include="bin\Debug\Notes-Images\minim.bmp" />
+    <Content Include="bin\Debug\Notes-Images\MinimR.bmp" />
+    <Content Include="bin\Debug\Notes-Images\Natural.bmp" />
+    <Content Include="bin\Debug\Notes-Images\Natural1.bmp" />
+    <Content Include="bin\Debug\Notes-Images\PNG format.png" />
+    <Content Include="bin\Debug\Notes-Images\PNG format\Quaver.png" />
+    <Content Include="bin\Debug\Notes-Images\Quaver.bmp" />
+    <Content Include="bin\Debug\Notes-Images\Quaver.png" />
+    <Content Include="bin\Debug\Notes-Images\Quaver1.png" />
+    <Content Include="bin\Debug\Notes-Images\QuaverR.bmp" />
+    <Content Include="bin\Debug\Notes-Images\SemiBreve.bmp" />
+    <Content Include="bin\Debug\Notes-Images\SemiBreveR.bmp" />
+    <Content Include="bin\Debug\Notes-Images\SemiQuaver.bmp" />
+    <Content Include="bin\Debug\Notes-Images\SemiQuaverR.bmp" />
+    <Content Include="bin\Debug\Notes-Images\Sharp.bmp" />
+    <Content Include="bin\Debug\Notes-Images\Sharp1.bmp" />
+    <Content Include="bin\Debug\Notes-Images\Staff.bmp" />
+    <Content Include="bin\Debug\Notes-Images\Staff2.bmp" />
+    <Content Include="bin\Debug\Notes-Images\Treble.bmp" />
+    <Content Include="bin\Debug\Notes-Sound files\a#0.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\a#1.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\a0.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\a1.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\b0.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\b1.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\c#0.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\c#1.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\c0.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\c1.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\c2.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\d#0.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\d#1.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\d0.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\d1.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\e0.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\e1.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\f#0.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\f#1.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\f0.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\f1.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\g#0.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\g#1.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\g0.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\g1.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\1.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\10.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\11.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\12.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\13.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\14.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\15.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\16.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\17.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\18.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\19.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\2.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\20.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\21.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\22.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\23.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\24.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\25.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\3.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\4.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\5.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\6.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\7.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\8.wav" />
+    <Content Include="bin\Debug\Notes-Sound files\mapped\9.wav" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

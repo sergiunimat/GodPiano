@@ -1,0 +1,9 @@
+C:\Users\desir\source\repos\Piano2\Piano2\obj\Debug\Piano2.csprojAssemblyReference.cache
+C:\Users\desir\source\repos\Piano2\Piano2\obj\Debug\Piano2.Properties.Resources.resources
+C:\Users\desir\source\repos\Piano2\Piano2\obj\Debug\Piano2.csproj.GenerateResource.cache
+C:\Users\desir\source\repos\Piano2\Piano2\bin\Debug\Piano2.exe.config
+C:\Users\desir\source\repos\Piano2\Piano2\bin\Debug\Piano2.exe
+C:\Users\desir\source\repos\Piano2\Piano2\bin\Debug\Piano2.pdb
+C:\Users\desir\source\repos\Piano2\Piano2\obj\Debug\Piano2.exe
+C:\Users\desir\source\repos\Piano2\Piano2\obj\Debug\Piano2.pdb
+C:\Users\desir\source\repos\Piano2\Piano2\obj\Debug\Piano2.PianoForm.resources
