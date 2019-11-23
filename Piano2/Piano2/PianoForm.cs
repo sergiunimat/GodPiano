@@ -20,7 +20,7 @@ namespace Piano2
 
         /*variables & arrays*/
         string beforeWave;
-        string soundSpath = @"C:\Users\desir\source\repos\Piano2\Piano2\bin\Debug\Notes-Sound files\";
+        string soundSpath = @"C:\Users\desir\Documents\forkbasic\GodPiano\Piano2\Piano2\bin\Debug\Notes-Sound files\mapped\";
         int count = 0;
         private SoundPlayer sp;
         private Timer timer1;
@@ -129,16 +129,13 @@ namespace Piano2
                         timer1.Enabled = true;
                         count = 0;
                         timer1.Start();
-                        if (mk.notePitch==1)
-                        {
-                            beforeWave = "a";
-                        }
-                        sp.SoundLocation =soundSpath + beforeWave + mk.notePitch.ToString() + ".wav";
+
+                        sp.SoundLocation =soundSpath+ mk.notePitch.ToString() + ".wav";
                         sp.Play();
                     }
                 }
             }
-            //sp = new SoundPlayer(@"C:\Users\desir\source\repos\Piano2\Piano2\Notes-Sound files\a#0.wav");
+            //sp = new SoundPlayer(@"C:\Users\desir\Documents\forkbasic\GodPiano\Piano2\Piano2\bin\Debug\Notes-Sound files\a#0.wav");
             //sp.Play();
             //throw new NotImplementedException();
         }
