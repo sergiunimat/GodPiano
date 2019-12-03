@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 /*  (above line) enables to play different sound(s)*/
@@ -16,7 +17,7 @@ namespace Piano2
     public partial class PianoForm : Form
     {
 
-        #region
+        #region Variables & Arrays
 
         /*variables & arrays*/
         string beforeWave;
@@ -33,16 +34,18 @@ namespace Piano2
         //int[] xPos= {100,300,700,900,1100,1500,1700,2100,2300,2500};
         int[] xPos= {10,30,70,90,110,150,170,210,230,250};
         private Panel panel1= new Panel();
-        private Panel panel2= new Panel();
-        
+        public Panel panel2= new Panel();
 
-        #endregion
+
+        #endregion  
+
         /*  this is the constructor of the "Form1"/PianoForm*/
         public PianoForm()
         {
             InitializeComponent();    
         }
 
+        #region DrawPianoButtons() (we dont use it)
         private void DrawPianoButtons()
         {
             Muskey mk;
@@ -72,45 +75,38 @@ namespace Piano2
                 this.Controls[this.panel1.Controls.Count-1].BringToFront();
             }
         }
-
+        #endregion  
 
 
 
         private void button1_MouseUp(object sender, MouseEventArgs e)
         {
+
             foreach (Muskey mk in this.panel1.Controls)
             {
                 if (sender==mk)
                 {
                     if (e.Button==MouseButtons.Left)
                     {
+                        timer1.Stop();
                         timer1.Enabled = false;
-                        sp.Stop();
-                        string bNoteShape = null;
+                        string bNoteShape = "SemiBreve";//note this is the name of the file.
                         int duration = 0;
-                        switch (count)
-                        {
-                            case int n when (n>=16):
-                                bNoteShape = "SemiBrave";
-                                duration = 18;
-                                break;
-                            case int n when (n >= 18 && n<=5):
-                                bNoteShape = "DotMinim";
-                                duration = (11+15)/2;
-                                break;
-                                //note there are more cases, they need to be written down.
+                        //work on this and create the noteshape.
+                        if (count >= 16)
+                            bNoteShape = "SemiBreve"; duration = 18;
+                        if ((count >= 18) && (count <= 10))
+                            bNoteShape = "DotMinim"; duration = (11 + 15) / 2;
 
-                            default:
-                                break;
-                        }
-                        //MusicNote mn = new MusicNote(mk.notePitch,duration,bNoteShape);
-                        //mn.Location = new Point(xLoc,yLoc);
-                        //this.panel2.Controls.Add(mn);
-                        //xLoc = xLoc + 15;
+                        MusicNote mn = new MusicNote(mk.notePitch, duration, bNoteShape);
+                        mn.Location = new Point(xLoc, yLoc);
+                        this.panel2.Controls.Add(mn);
+                        xLoc = xLoc + 15;
 
                     }
                 }
             }
+            
             
             //throw new NotImplementedException();
         }
@@ -118,6 +114,7 @@ namespace Piano2
         private void button1_MouseDown(object sender, MouseEventArgs e)
         {
             timer1 = new Timer();
+            //((sender as Button).Tag as Stopwatch).Start();
             sp = new SoundPlayer();
 
             foreach (Muskey mk in this.panel1.Controls)
@@ -128,16 +125,17 @@ namespace Piano2
                     {
                         timer1.Enabled = true;
                         count = 0;
+                        timer1.Tick += new EventHandler(this.timer1_Tick);
                         timer1.Start();
 
-                        sp.SoundLocation =soundSpath+ mk.notePitch.ToString() + ".wav";
-                        sp.Play();
+                        sp.SoundLocation =soundSpath + mk.notePitch.ToString() + ".wav";
+                        //i think we need to specify the duration 
+                            sp.Play();
+                   
                     }
                 }
             }
-            //sp = new SoundPlayer(@"C:\Users\desir\Documents\forkbasic\GodPiano\Piano2\Piano2\bin\Debug\Notes-Sound files\a#0.wav");
-            //sp.Play();
-            //throw new NotImplementedException();
+            
         }
 
         private void PianoForm_Load(object sender, EventArgs e)
@@ -148,10 +146,13 @@ namespace Piano2
             this.panel1.Size = new Size(600,200);
             this.Controls.Add(panel1);
             //adding the panel2 ~ the music lines.
-            this.panel2.Location = new Point(xLoc, 30);
+            this.panel2.Location = new Point(xLoc, 60);
             this.panel2.BackColor = Color.Azure;
-            this.panel2.Size = new Size(600, 200);
+            this.panel2.BackgroundImage = Image.FromFile(@"C:\Users\desir\Documents\forkbasic\GodPiano\Piano2\Piano2\bin\Debug\Notes-Images\Staff2.bmp");
+            //Image background = Image.FromFile(@"C:\Users\desir\Documents\forkbasic\GodPiano\Piano2\Piano2\bin\Debug\Notes-Images\Staff2.bmp");
+            this.panel2.Size = new Size(600, 70);
             this.Controls.Add(panel2);
+            
 
 
             Muskey mk;
@@ -163,10 +164,9 @@ namespace Piano2
                 int pitch = whitePitch[k];
                 int xPos = k * 40;//xPosition?
                 mk = new Muskey(pitch, xPos, 10);
-                //mk.Name = "button" + k;
-                mk.MouseDown += new MouseEventHandler(this.button1_MouseDown);
-                //mk.MouseDown += new EventHandler();
-                mk.MouseDown += new MouseEventHandler(this.button1_MouseUp);
+                mk.Tag = new Stopwatch();
+                mk.MouseDown += new MouseEventHandler(this.button1_MouseDown);                
+                mk.MouseUp += new MouseEventHandler(this.button1_MouseUp);
                 this.panel1.Controls.Add(mk);
                 
             }
@@ -177,9 +177,9 @@ namespace Piano2
                 /*  note here we are using xPoss unlike in notes (xPos)*/
                 int xP = xPos[k]*2;
                 bmk = new BlackMuskey(pitch, xP, 10);
-                /*  note here we use bmk unlike in the notes*/
+                bmk.Tag = new Stopwatch();
                 bmk.MouseDown += new MouseEventHandler(this.button1_MouseDown);
-                bmk.MouseDown += new MouseEventHandler(this.button1_MouseUp);
+                bmk.MouseUp += new MouseEventHandler(this.button1_MouseUp);
                 this.panel1.Controls.Add(bmk);
                 this.panel1.Controls[this.panel1.Controls.Count-1].BringToFront();
                 
@@ -188,7 +188,29 @@ namespace Piano2
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            count = count++;
+            count++;
+        }
+
+        private void MusicNote_Click(object sender, EventArgs e)
+        {
+            /*note panel2 is the holder of the music stuff.*/
+            foreach (MusicNote mn in this.panel2.Controls)
+            {
+                /*  if this condition is true for a specific note checked on  music stuff*/
+                if (sender == mn)
+                {
+                    timer1.Enabled = true; /*   this is the variable of timpe component*/
+                    count = 0;
+                    SoundPlayer sp = new SoundPlayer();
+                   // sp.SoundLocation( mk.notePitch.toString()+".wav");
+                    while (count <= mn.noteDuration)
+                    {
+                        sp.Play();
+                    }
+                    timer1.Enabled = false;
+                    sp.Stop();
+                }
+            }
         }
     }
 }

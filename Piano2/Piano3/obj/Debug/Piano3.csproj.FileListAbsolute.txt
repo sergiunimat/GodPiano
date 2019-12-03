@@ -1,0 +1,9 @@
+C:\Users\desir\Documents\forkbasic\GodPiano\Piano2\Piano3\bin\Debug\Piano3.exe.config
+C:\Users\desir\Documents\forkbasic\GodPiano\Piano2\Piano3\bin\Debug\Piano3.exe
+C:\Users\desir\Documents\forkbasic\GodPiano\Piano2\Piano3\bin\Debug\Piano3.pdb
+C:\Users\desir\Documents\forkbasic\GodPiano\Piano2\Piano3\obj\Debug\Piano3.csprojAssemblyReference.cache
+C:\Users\desir\Documents\forkbasic\GodPiano\Piano2\Piano3\obj\Debug\Piano3.Piano.resources
+C:\Users\desir\Documents\forkbasic\GodPiano\Piano2\Piano3\obj\Debug\Piano3.Properties.Resources.resources
+C:\Users\desir\Documents\forkbasic\GodPiano\Piano2\Piano3\obj\Debug\Piano3.csproj.GenerateResource.cache
+C:\Users\desir\Documents\forkbasic\GodPiano\Piano2\Piano3\obj\Debug\Piano3.exe
+C:\Users\desir\Documents\forkbasic\GodPiano\Piano2\Piano3\obj\Debug\Piano3.pdb

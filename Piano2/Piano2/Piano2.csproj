@@ -52,6 +52,9 @@
     <Compile Include="MusicNote.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="MusicStaff.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PianoForm.cs">
       <SubType>Form</SubType>
     </Compile>

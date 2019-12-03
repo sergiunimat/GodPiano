@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piano2", "Piano2\Piano2.csproj", "{53704813-A0C0-45BF-BEC4-976CE3F575D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piano3", "Piano3\Piano3.csproj", "{05E53E95-3AF5-464C-8CB0-962F89298343}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{53704813-A0C0-45BF-BEC4-976CE3F575D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53704813-A0C0-45BF-BEC4-976CE3F575D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53704813-A0C0-45BF-BEC4-976CE3F575D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05E53E95-3AF5-464C-8CB0-962F89298343}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05E53E95-3AF5-464C-8CB0-962F89298343}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05E53E95-3AF5-464C-8CB0-962F89298343}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05E53E95-3AF5-464C-8CB0-962F89298343}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
