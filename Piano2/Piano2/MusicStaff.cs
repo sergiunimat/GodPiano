@@ -13,7 +13,8 @@ namespace Piano2
             size with 5 lines of music staff. The lines are fixed-relative to the upper left corner
             of the panel*/
         #region Data Fields
-        List<MusicNote> MusicNoteObejectsCollection = new List<MusicNote>();//to store music notes
+        
+        
         Button play = new Button();
         Button save = new Button();
         Button load = new Button();

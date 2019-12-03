@@ -22,11 +22,15 @@ namespace Piano2
         /*variables & arrays*/
         string beforeWave;
         string soundSpath = @"C:\Users\desir\Documents\forkbasic\GodPiano\Piano2\Piano2\bin\Debug\Notes-Sound files\mapped\";
-        int count = 0;
+        double count = 0;
         private SoundPlayer sp;
         private Timer timer1;
+        private Stopwatch stopWatch;
+        List<MusicNote> MusicNoteObejectsCollection = new List<MusicNote>();//to store music notes
         int xLoc = 100;
         int yLoc = 200;
+
+        
         
         int[] whitePitch = {1,3,5,6,8,10,12,13,15,17,18,20,22,24};
         //int[] whitePitch = {10,30,50,60,80,100,120,130,150,170,180,200,220,240};
@@ -81,25 +85,53 @@ namespace Piano2
 
         private void button1_MouseUp(object sender, MouseEventArgs e)
         {
-
+            stopWatch.Stop();
+            count = stopWatch.ElapsedMilliseconds;
             foreach (Muskey mk in this.panel1.Controls)
             {
                 if (sender==mk)
                 {
                     if (e.Button==MouseButtons.Left)
                     {
-                        timer1.Stop();
-                        timer1.Enabled = false;
-                        string bNoteShape = "SemiBreve";//note this is the name of the file.
+                        //timer1.Stop();
+                        //timer1.Enabled = false;
+                        string bNoteShape = null;//note this is the name of the file.
                         int duration = 0;
                         //work on this and create the noteshape.
-                        if (count >= 16)
-                            bNoteShape = "SemiBreve"; duration = 18;
-                        if ((count >= 18) && (count <= 10))
-                            bNoteShape = "DotMinim"; duration = (11 + 15) / 2;
+
+                        if (returnTicker(count) <= 1) {
+                            bNoteShape = "SemiQuaver";
+                            duration = 1;
+                        }                            
+                        else if (returnTicker(count) == 2) {
+                            bNoteShape = "Quaver";
+                            duration = 2;
+                        }
+                        else if (returnTicker(count)>=3 && returnTicker(count)<=5)
+                        {
+                            bNoteShape = "Crotchet";
+                            duration = 4;
+                        }
+                        else if (returnTicker(count) >= 6 && returnTicker(count) <= 10)
+                        {
+                            bNoteShape = "Minim";
+                            duration = 10;
+                        }
+                        else if (returnTicker(count) >= 11 && returnTicker(count) <= 15)
+                        {
+                            bNoteShape = "DottedMinim";
+                            duration = 14;
+                        }
+                        else
+                        {
+                            bNoteShape = "SemiBreve";
+                            duration = 18;
+                        }
+
 
                         MusicNote mn = new MusicNote(mk.notePitch, duration, bNoteShape);
                         mn.Location = new Point(xLoc, yLoc);
+                        MusicNoteObejectsCollection.Add(mn);
                         this.panel2.Controls.Add(mn);
                         xLoc = xLoc + 15;
 
@@ -111,9 +143,21 @@ namespace Piano2
             //throw new NotImplementedException();
         }
 
+        private int returnTicker(double counter)
+        {
+            int tickCount = 0;
+            if (counter%63!=0)
+                return  tickCount = Convert.ToInt32(Math.Floor(counter / 63));
+            else
+                return tickCount = Convert.ToInt32(counter / 63);
+
+        }
+
         private void button1_MouseDown(object sender, MouseEventArgs e)
         {
-            timer1 = new Timer();
+            stopWatch = new Stopwatch();
+            stopWatch.Start();
+            //timer1 = new Timer();
             //((sender as Button).Tag as Stopwatch).Start();
             sp = new SoundPlayer();
 
@@ -123,10 +167,10 @@ namespace Piano2
                 {
                     if (e.Button == MouseButtons.Left)
                     {
-                        timer1.Enabled = true;
-                        count = 0;
-                        timer1.Tick += new EventHandler(this.timer1_Tick);
-                        timer1.Start();
+                        //timer1.Enabled = true;
+                        //count = 0.0;
+                        //timer1.Tick += new EventHandler(this.timer1_Tick);
+                        //timer1.Start();
 
                         sp.SoundLocation =soundSpath + mk.notePitch.ToString() + ".wav";
                         //i think we need to specify the duration 
@@ -157,6 +201,7 @@ namespace Piano2
 
             Muskey mk;
             BlackMuskey bmk;
+            
             /*  draw the white buttons*/
 
             for (int k = 0; k < whitePitch.Length; k++)
